@@ -22,8 +22,6 @@ from os import listdir
 import json
 import jinja2
 
-abs_path = Path(__file__).parent.absolute()
-
 cred = credentials.Certificate('app/cv-generator-e29dd-firebase-adminsdk-zvelg-ae5fe10a7a.json')
 initialize_app(cred, {
     'databaseURL': 'https://cv-generator-e29dd-default-rtdb.firebaseio.com/',
@@ -92,12 +90,9 @@ async def generate(unique_code):
     return 'OK'
 
 async def generate_pdf(template_id, unique_code):
-    print('abs_path', abs_path)
     local_path = f'file://{abs_path}'
     html_file = f'{local_path}/templates/{template_id}/{unique_code}.html'
-    pdf_file = f'temp/{unique_code}.pdf'
-    print(listdir('.'))
-    print(listdir(str(abs_path)))
+    pdf_file = f'app/temp/{unique_code}.pdf'
     try:
         print('trace 1')
         browser = await launch({
@@ -119,7 +114,7 @@ async def generate_pdf(template_id, unique_code):
         await page.waitFor(2000)
         print('trace 6')
         await page.pdf({
-            'path': f'{abs_path}/{pdf_file}',
+            'path': {pdf_file},
             'format': 'A4',
             'printBackground': True
         })
