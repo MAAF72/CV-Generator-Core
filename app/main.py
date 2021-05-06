@@ -82,12 +82,18 @@ async def generate(unique_code):
                 'file': blob.public_url
             })
         else:
+            print('GENERATE RESULT ERROR')
             return 'ERROR'
     except FirebaseError as e:
-        print('Error when generating cv', e)
+        print('Firebase error when generating cv', e)
         return 'ERROR'
+    except Exception as e:
+        print('Firebase error when generating cv', e)
+        return 'ERROR'
+    else:
+        return 'OK'
 
-    return 'OK'
+    
 
 async def generate_pdf(template_id, unique_code):
     abs_path = Path(__file__).parent.absolute()
@@ -127,8 +133,8 @@ async def generate_pdf(template_id, unique_code):
         
         await browser.close()
         
-        return True
     except Exception as e:
         print('error when generating pdf', e)
-        
-    return False
+        return 'ERROR'
+    else:
+        return 'OK'
