@@ -1,1 +1,1 @@
-web: hypercorn wsgi:app
+web: hypercorn --bind 0.0.0.0:${PORT} wsgi:app
