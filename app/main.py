@@ -93,18 +93,16 @@ async def generate(unique_code):
     return 'OK'
 
 async def generate_pdf(template_id, unique_code):
-    print(os.environ.get("GOOGLE_CHROME_SHIM", None))
+    print('Chrome bawaan heroku', os.environ.get("GOOGLE_CHROME_SHIM", None))
     local_path = f'file://{abs_path}'
     html_file = f'{local_path}/templates/{template_id}/{unique_code}.html'
-    pdf_file = f'{local_path}/temp/{unique_code}.pdf'
+    pdf_file = f'temp/{unique_code}.pdf'
     
     try:
         print('trace 1')
         browser = await launch({
             'headless': True,
             'args': ['--no-sandbox', '--disable-setuid-sandbox'],
-            'executablePath': os.environ.get("GOOGLE_CHROME_SHIM", None)
-
         })
         print('trace 2')
         page = await browser.newPage()
