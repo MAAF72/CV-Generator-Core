@@ -1,5 +1,6 @@
 hypercorn
 quart
+quart-cors
 jinja2
 firebase_admin
 pyppeteer

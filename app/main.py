@@ -1,4 +1,5 @@
 from quart import Quart
+from quart_cors import cors
 
 from firebase_admin import credentials, db, initialize_app, storage
 from firebase_admin.exceptions import FirebaseError
@@ -29,6 +30,7 @@ initialize_app(cred, {
 })
 
 app = Quart(__name__)
+app = cors(app, allow_origin='*')
 
 ref = db.reference('/cvs')
 
