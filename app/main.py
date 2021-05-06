@@ -64,7 +64,7 @@ async def generate(unique_code):
 
         template_folder = f'app/templates/{py_cv.template.id}'
         html_file = f'{template_folder}/{unique_code}.html'
-        pdf_file = f'temp/{unique_code}.pdf'
+        pdf_file = f'app/temp/{unique_code}.pdf'
         
         jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(template_folder))
         
