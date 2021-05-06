@@ -96,7 +96,7 @@ async def generate_pdf(template_id, unique_code):
     pdf_file = f'app/temp/{unique_code}.pdf'
 
     if not path.exists('app/temp/'):
-        makedirs('dirName')
+        makedirs('app/temp/')
 
     try:
         print('trace 1')
