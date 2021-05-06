@@ -90,6 +90,7 @@ async def generate(unique_code):
     return 'OK'
 
 async def generate_pdf(template_id, unique_code):
+    abs_path = Path(__file__).parent.absolute()
     local_path = f'file://{abs_path}'
     html_file = f'{local_path}/templates/{template_id}/{unique_code}.html'
     pdf_file = f'app/temp/{unique_code}.pdf'
