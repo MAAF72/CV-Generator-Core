@@ -21,6 +21,8 @@ from pathlib import Path
 import json
 import jinja2
 
+import os
+
 abs_path = Path(__file__).parent.absolute()
 
 cred = credentials.Certificate('app/cv-generator-e29dd-firebase-adminsdk-zvelg-ae5fe10a7a.json')
@@ -91,14 +93,16 @@ async def generate(unique_code):
     return 'OK'
 
 async def generate_pdf(template_id, unique_code):
-    template_folder = f'templates/{template_id}'
-    html_file = f'file://{abs_path}/{template_folder}/{unique_code}.html'
-    pdf_file = f'temp/{unique_code}.pdf'
+    local_path = f'file://{abs_path}'
+    html_file = f'{local_path}/templates/{template_id}/{unique_code}.html'
+    pdf_file = f'{local_path}/{abs_path}/temp/{unique_code}.pdf'
     
     try:
         print('trace 1')
-        browser = await launch(options={
+        browser = await launch({
+            'headless': True,
             'args': ['--no-sandbox', '--disable-setuid-sandbox'],
+            'executablePath': os.environ.get("GOOGLE_CHROME_SHIM", None)
 
         })
         print('trace 2')
