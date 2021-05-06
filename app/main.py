@@ -36,7 +36,7 @@ ref = db.reference('/cvs')
 @app.route('/')
 async def index():
     return 'OHAYOUUUU'
-    
+
 @app.route('/enable-cors')
 async def enable_cors():
     try:
@@ -92,12 +92,15 @@ async def generate(unique_code):
 
 async def generate_pdf(template_id, unique_code):
     template_folder = f'templates/{template_id}'
-    html_file = f'file://wsl%24/ubuntu/{abs_path}/{template_folder}/{unique_code}.html'
+    html_file = f'file://{abs_path}/{template_folder}/{unique_code}.html'
     pdf_file = f'temp/{unique_code}.pdf'
     
     try:
         print('trace 1')
-        browser = await launch(options={'args': ['--no-sandbox']})
+        browser = await launch(options={
+            'args': ['--no-sandbox', '--disable-setuid-sandbox'],
+
+        })
         print('trace 2')
         page = await browser.newPage()
         print('trace 3')
@@ -108,7 +111,7 @@ async def generate_pdf(template_id, unique_code):
             'deviceScaleFactor': 2
         })
         print('trace 4')
-        await page.goto('https://maaf72.github.io')
+        await page.goto(html_file)
         print('trace 5')
         await page.waitFor(2000)
         print('trace 6')
