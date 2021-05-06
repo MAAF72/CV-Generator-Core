@@ -21,7 +21,7 @@ from pathlib import Path
 import json
 import jinja2
 
-import os
+import glob
 
 abs_path = Path(__file__).parent.absolute()
 
@@ -93,11 +93,11 @@ async def generate(unique_code):
     return 'OK'
 
 async def generate_pdf(template_id, unique_code):
-    print('Chrome bawaan heroku', os.environ.get("GOOGLE_CHROME_SHIM", None))
+    print('abs_path', abs_path)
     local_path = f'file://{abs_path}'
     html_file = f'{local_path}/templates/{template_id}/{unique_code}.html'
     pdf_file = f'temp/{unique_code}.pdf'
-    
+    print(glob.glob(abs_path))
     try:
         print('trace 1')
         browser = await launch({
