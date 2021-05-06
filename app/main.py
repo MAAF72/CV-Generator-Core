@@ -115,7 +115,7 @@ async def generate_pdf(template_id, unique_code):
         await page.waitFor(2000)
         print('trace 6')
         await page.pdf({
-            'path': {pdf_file},
+            'path': pdf_file,
             'format': 'A4',
             'printBackground': True
         })
