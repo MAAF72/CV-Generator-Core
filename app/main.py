@@ -97,7 +97,7 @@ async def generate_pdf(template_id, unique_code):
     local_path = f'file://{abs_path}'
     html_file = f'{local_path}/templates/{template_id}/{unique_code}.html'
     pdf_file = f'temp/{unique_code}.pdf'
-    print(glob.glob(abs_path))
+    print(glob.glob(str(abs_path)))
     try:
         print('trace 1')
         browser = await launch({
