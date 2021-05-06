@@ -5,16 +5,16 @@ from firebase_admin.exceptions import FirebaseError
 
 from pyppeteer import launch
 
-from classes.customer import Customer
-from classes.cv import CV
-from classes.edukasi import Edukasi
-from classes.bahasa import Bahasa
-from classes.pengalaman import Pengalaman
-from classes.penghargaan import Penghargaan
-from classes.sosial_media import SosialMedia
-from classes.kemampuan import Kemampuan
-from classes.rujukan import Rujukan
-from classes.template import Template
+from app.classes.customer import Customer
+from app.classes.cv import CV
+from app.classes.edukasi import Edukasi
+from app.classes.bahasa import Bahasa
+from app.classes.pengalaman import Pengalaman
+from app.classes.penghargaan import Penghargaan
+from app.classes.sosial_media import SosialMedia
+from app.classes.kemampuan import Kemampuan
+from app.classes.rujukan import Rujukan
+from app.classes.template import Template
 
 from pathlib import Path
 
@@ -23,7 +23,7 @@ import jinja2
 
 abs_path = Path(__file__).parent.absolute()
 
-cred = credentials.Certificate('cv-generator-e29dd-firebase-adminsdk-zvelg-ae5fe10a7a.json')
+cred = credentials.Certificate('app/cv-generator-e29dd-firebase-adminsdk-zvelg-ae5fe10a7a.json')
 initialize_app(cred, {
     'databaseURL': 'https://cv-generator-e29dd-default-rtdb.firebaseio.com/',
     'storageBucket': 'cv-generator-e29dd.appspot.com'
@@ -59,7 +59,7 @@ async def generate(unique_code):
         cv = ref.child(unique_code)
         py_cv = CV(cv.get())
 
-        template_folder = f'templates/{py_cv.template.id}'
+        template_folder = f'app/templates/{py_cv.template.id}'
         html_file = f'{template_folder}/{unique_code}.html'
         pdf_file = f'temp/{unique_code}.pdf'
         
@@ -122,9 +122,3 @@ async def generate_pdf(template_id, unique_code):
         print('error when generating pdf', e)
         
     return False
-
-if __name__ == '__main__':
-    pyppeteer.chromium_downloader.download_chromium()
-    app.jinja_env.auto_reload = True
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run()
