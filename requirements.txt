@@ -1,4 +1,4 @@
-gunicorn
+hypercorn
 quart
 jinja2
 firebase_admin

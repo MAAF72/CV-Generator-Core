@@ -33,6 +33,10 @@ app = Quart(__name__)
 
 ref = db.reference('/cvs')
 
+@app.route('/')
+async def index():
+    return 'OHAYOUUUU'
+    
 @app.route('/enable-cors')
 async def enable_cors():
     try:
