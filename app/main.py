@@ -38,6 +38,9 @@ ref = db.reference('/cvs')
 async def index():
     return 'OHAYOUUUU'
 
+@app.route('/test')
+async def test():
+
 @app.route('/enable-cors')
 async def enable_cors():
     try:
@@ -107,31 +110,24 @@ async def generate_pdf(template_id, unique_code):
         makedirs('app/temp/')
 
     try:
-        print('trace 1')
         browser = await launch({
             'headless': True,
             'args': ['--no-sandbox', '--disable-setuid-sandbox'],
         })
-        print('trace 2')
         page = await browser.newPage()
-        print('trace 3')
         await page.setViewport({
             'height': 0,
             'width': 0, 
             'preferCSSPageSize': True,
             'deviceScaleFactor': 2
         })
-        print('trace 4')
         await page.goto(html_file)
-        print('trace 5')
         await page.waitFor(2000)
-        print('trace 6')
         await page.pdf({
             'path': pdf_file,
             'format': 'A4',
             'printBackground': True
         })
-        print('trace 7')
         
         await browser.close()
         
