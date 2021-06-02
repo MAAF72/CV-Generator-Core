@@ -1,4 +1,6 @@
-class Edukasi:
+import datetime as dt
+
+class Edukasi(object):
     def __init__(self, obj={}):
         self.set_jenjang(obj.get('jenjang', None))
         self.set_instansi(obj.get('instansi', None))
@@ -20,3 +22,6 @@ class Edukasi:
 
     def set_deskripsi(self, deskripsi):
         self.deskripsi = deskripsi
+
+    def to_date(self, date_str):
+        return dt.datetime.strptime(date_str, '%Y-%m-%d').date()

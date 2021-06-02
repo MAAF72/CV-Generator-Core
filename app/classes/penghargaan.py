@@ -1,4 +1,6 @@
-class Penghargaan:
+import datetime as dt
+
+class Penghargaan():
     def __init__(self, obj={}):
         self.set_nama(obj.get('nama', None))
         self.set_instansi(obj.get('instansi', None))
@@ -16,3 +18,6 @@ class Penghargaan:
         
     def set_deskripsi(self, deskripsi):
         self.deskripsi = deskripsi
+
+    def to_date(self, date_str):
+        return dt.datetime.strptime(date_str, '%Y-%m-%d').date()

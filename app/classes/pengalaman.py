@@ -1,4 +1,6 @@
-class Pengalaman:
+import datetime as dt
+
+class Pengalaman(object):
     def __init__(self, obj={}):
         self.set_nama(obj.get('nama', None))
         self.set_instansi(obj.get('instansi', None))
@@ -23,3 +25,6 @@ class Pengalaman:
 
     def get_durasi(self):
         return self.tahun_selesai - self.tahun_mulai
+        
+    def to_date(self, date_str):
+        return dt.datetime.strptime(date_str, '%Y-%m-%d').date()
