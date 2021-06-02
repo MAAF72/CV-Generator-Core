@@ -14,6 +14,7 @@ class Customer:
         self.set_foto(obj.get('foto', None))
         self.set_email(obj.get('email', None))
         self.set_no_hp(obj.get('no_hp', None))
+        self.set_portfolio(obj.get('portfolio', None))
 
         self.list_pengalaman = []
         self.list_edukasi = []
@@ -61,6 +62,9 @@ class Customer:
 
     def set_email(self, email):
         self.email = email
+
+    def set_portfolio(self, portfolio):
+        self.portfolio = portfolio
 
     def add_pengalaman(self, pengalaman):
         self.list_pengalaman.append(pengalaman)
