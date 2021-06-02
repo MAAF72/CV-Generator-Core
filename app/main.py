@@ -6,21 +6,11 @@ from firebase_admin.exceptions import FirebaseError
 
 from pyppeteer import launch
 
-from app.classes.customer import Customer
-from app.classes.cv import CV
-from app.classes.edukasi import Edukasi
-from app.classes.bahasa import Bahasa
-from app.classes.pengalaman import Pengalaman
-from app.classes.penghargaan import Penghargaan
-from app.classes.sosial_media import SosialMedia
-from app.classes.kemampuan import Kemampuan
-from app.classes.rujukan import Rujukan
-from app.classes.template import Template
-
 from pathlib import Path
-from os import listdir, path, makedirs
+from os import path, makedirs
 
-import json
+from app.classes.cv import CV
+
 import jinja2
 
 cred = credentials.Certificate('app/cv-generator-e29dd-firebase-adminsdk-zvelg-ae5fe10a7a.json')
