@@ -38,9 +38,6 @@ ref = db.reference('/cvs')
 async def index():
     return 'OHAYOUUUU'
 
-@app.route('/test')
-async def test():
-
 @app.route('/enable-cors')
 async def enable_cors():
     try:
