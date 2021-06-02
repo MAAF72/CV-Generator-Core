@@ -10,7 +10,7 @@ class Customer:
     def __init__(self, obj={}):
         self.set_nama(obj.get('nama', None))
         self.set_job(obj.get('job', None))
-        self.set_deskripsi(obj.get('deksripsi', None))
+        self.set_deskripsi(obj.get('deskripsi', None))
         self.set_foto(obj.get('foto', None))
         self.set_email(obj.get('email', None))
         self.set_no_hp(obj.get('no_hp', None))
