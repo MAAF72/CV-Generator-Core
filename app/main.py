@@ -105,15 +105,15 @@ async def generate_pdf(template_id, unique_code):
         await page.setViewport({
             'height': 0,
             'width': 0, 
-            'preferCSSPageSize': True,
+            #'preferCSSPageSize': True,
             'deviceScaleFactor': 2
         })
         await page.goto(html_file)
-        await page.waitFor(2000)
+        await page.waitFor(3000)
         await page.pdf({
             'path': pdf_file,
             'format': 'A4',
-            'printBackground': True
+            #'printBackground': True
         })
         
         await browser.close()
