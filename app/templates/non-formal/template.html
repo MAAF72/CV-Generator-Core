@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="col-md-offset-2 col-md-8" style="background: #E4E5E9" id="wrapper">
+        <div id="header">
+            <div>
+                <img src="{{ data.foto }}" id="image">
+            </div>
+            <div>
+                <h2 id="name">{{ data.nama }}</h2>
+                <p id="underline"></p>
+                <h5 id="web">{{ data.job }}</h5>
+                <div class="topN">
+                    <span>{{ data.no_hp }}</span>
+                    <span id="space">{{ data.email }}</a></span>
+                    <span id="space">{{ data.portfolio }}</span>
+                </div>
+            </div>
+        </div><!--  end header -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4 id="exp">ABOUT ME</h4>
+                <div>
+                    <div class="info2">
+                        <div>
+                            <!--  <h4 id="ent">Enterprise</h4> -->
+                            <p id="space">{{ data.deskripsi }}</p>
+                        </div>
+                    </div> <!-- end section 1 -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 id="exp">EXPERIENCE</h4>
+                            <div id="experience">
+                                {% for p in data.list_pengalaman %}
+                                <div id="exp1">
+                                    <div>
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 438.536 438.536"
+                                            style="enable-background:new 0 0 438.536 438.536;" xml:space="preserve">
+                                            <path
+                                                d="M433.113,5.424C429.496,1.807,425.215,0,420.267,0H18.276C13.324,0,9.041,1.807,5.425,5.424
+       C1.808,9.04,0.001,13.322,0.001,18.271v401.991c0,4.948,1.807,9.233,5.424,12.847c3.619,3.614,7.902,5.428,12.851,5.428h401.991
+       c4.948,0,9.229-1.813,12.847-5.428c3.614-3.613,5.421-7.898,5.421-12.847V18.271C438.534,13.319,436.73,9.04,433.113,5.424z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span id="head">{{ p.instansi }}</span>
+                                        <p>{{ p.to_date(p.tahun_mulai).year }} - {{ p.to_date(p.tahun_selesai).year }}</p>
+                                    </div>
+                                    <div id="ent">
+                                        <h4>{{ p.name }}</h4>
+                                        <p>{{ p.deskripsi }}</p>
+                                    </div>
+                                </div> <!-- end section 1 -->
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div> <!-- end row 1 -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 id="exp">EDUCATION</h4>
+                            <div id="education">
+                                {% for e in data.list_pengalaman %}
+                                <div id="exp1">
+                                    <div>
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 438.536 438.536"
+                                            style="enable-background:new 0 0 438.536 438.536;" xml:space="preserve">
+                                            <path
+                                                d="M433.113,5.424C429.496,1.807,425.215,0,420.267,0H18.276C13.324,0,9.041,1.807,5.425,5.424
+       C1.808,9.04,0.001,13.322,0.001,18.271v401.991c0,4.948,1.807,9.233,5.424,12.847c3.619,3.614,7.902,5.428,12.851,5.428h401.991
+       c4.948,0,9.229-1.813,12.847-5.428c3.614-3.613,5.421-7.898,5.421-12.847V18.271C438.534,13.319,436.73,9.04,433.113,5.424z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span id="head">{{ e.instansi }}</span>
+                                        <p>{{ e.to_date(e.tahun_mulai).year }} - {{ e.to_date(e.tahun_selesai).year }}</p>
+                                    </div>
+                                    <div id="ent">
+                                        <h4>{{ e.jenjang }}</h4>
+                                        <p>{{ e.deskripsi }}</p>
+                                    </div>
+                                </div> <!-- end section 1 -->
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div> <!-- end row 1 -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 id="exp">ACHIEVEMENT</h4>
+                            <div id="education">
+                                {% for p in data.list_penghargaan %}
+                                <div id="exp1">
+                                    <div>
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 438.536 438.536"
+                                            style="enable-background:new 0 0 438.536 438.536;" xml:space="preserve">
+                                            <path
+                                                d="M433.113,5.424C429.496,1.807,425.215,0,420.267,0H18.276C13.324,0,9.041,1.807,5.425,5.424
+       C1.808,9.04,0.001,13.322,0.001,18.271v401.991c0,4.948,1.807,9.233,5.424,12.847c3.619,3.614,7.902,5.428,12.851,5.428h401.991
+       c4.948,0,9.229-1.813,12.847-5.428c3.614-3.613,5.421-7.898,5.421-12.847V18.271C438.534,13.319,436.73,9.04,433.113,5.424z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span id="head">{{ p.instansi }}</span>
+                                        <p>{{ p.to_date(p.tahun).strftime('%d %B %Y') }}</p>
+                                    </div>
+                                    <div id="ent">
+                                        <h4>{{ p.nama }}</h4>
+                                        <p>{{ p.deskripsi }}</p>
+                                    </div>
+                                </div> <!-- end section 1 -->
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div> <!-- end row 1 -->
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4 id="contacts">LANGUAGE</h4>
+                            {% for b in data.list_bahasa %}
+                            <div class="topM">
+                                <span id="space">{{ b.nama }} ({{ b.level }})</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-7">
+                            <h4 id="skills">REFERENCE</h4>
+                            <div>
+                                <ul>
+                                    {% for r in data.list_rujukan %}
+                                    <li>
+                                        <div class="info">
+                                            <p>{{ r.nama }} ({{ r.no_hp }})</p>
+                                            <p>{{ r.email }} ({{ r.instansi }})</p>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4 id="contacts">CONTACT</h4>
+                        {% for s in data.list_sosial_media %}
+                        <div class="topM">
+                            <div id="space">
+                                <div><strong>{{ s.nama }}</strong></div>
+                                <div><a href="#">{{ s.link }}</a></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-7">
+                        <h4 id="skills">SKILLS</h4>
+                        <div class="skills">
+                            <div>
+                                {% for k in data.list_kemampuan %}
+                                <div id="ui">
+                                    <p>{{ k.nama }}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
