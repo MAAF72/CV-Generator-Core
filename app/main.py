@@ -113,7 +113,7 @@ async def generate_pdf(template_id, unique_code):
         await page.pdf({
             'path': pdf_file,
             'format': 'A4',
-            #'printBackground': True
+            'printBackground': True
         })
         
         await browser.close()

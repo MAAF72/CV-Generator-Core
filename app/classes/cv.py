@@ -4,10 +4,14 @@ import json
 
 class CV:
     def __init__(self, obj={}):
+        self.set_id(obj.get('id', None))
         self.set_code(obj.get('code', None))
         self.set_customer(Customer(obj.get('customer', {})))
         self.set_template(Template(obj.get('template', {})))
         self.set_file(obj.get('file', None))
+
+    def set_id(self, id):
+        self.id = id
 
     def set_code(self, code):
         self.code = code
