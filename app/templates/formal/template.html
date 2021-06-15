@@ -2,161 +2,149 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>CV Generation</title>
+  <meta charset="UTF-8">
+  <title>cv non formal</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </head>
 
 <body>
-
-  <div id="resume" class="resume">
-    <div class="resume_left">
-      <div class="resume_profile">
-        <img src="{{ data.foto }}" alt="profile_pic">
+  <div class="container">
+    <section>
+      <div>
+        <div><img src="{{ data.foto }}" alt="picture" class="picture"></div>
       </div>
-      <div class="resume_content">
-        <div class="resume_item resume_info">
-          <div class="title">
-            <p class="bold">{{ data.nama }}</p>
-            <p class="regular">{{ data.job }}</p>
-          </div>
-          <ul>
-            <li>
-              <div class="data">{{ data.no_hp }}</div>
-            </li>
-            <li>
-              <div class="data">{{ data.email }}</div>
-            </li>
-            <li>
-              <div class="data">{{ data.portfolio }}</div>
-            </li>
-          </ul>
-
-        </div>
-        <div class="resume_item resume_language">
-          <div class="title">
-            <p class="bold">Languages</p>
-          </div>
-          <ul>
-            {% for b in data.list_bahasa %}
-            <li>
-              <div class="language_name">
-                {{ b.nama }} ({{ b.level }})
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="resume_item resume_skills">
-          <div class="title">
-            <p class="bold">skill's</p>
-          </div>
-          <ul>
-            <li>
-              <div class="skill_name">
-                {% for k in data.list_kemampuan %}
-                <td>{{ k.nama }}</td>
-                {% endfor %}
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="resume_item resume_social">
-          <div class="title">
-            <p class="bold">Social</p>
-          </div>
-          <ul>
-            {% for s in data.list_sosial_media %}
-            <li>
-              <div class="data">
-                <p class="semi-bold">{{ s.nama }}</p>
-                <p><a href="{{ s.link }}">{{ s.link }}</a></p>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="resume_right">
-      <div class="resume_item resume_about">
-        <div class="title">
-          <p class="bold">About Me</p>
-        </div>
+      <div>
+        <div class="my-name">{{ data.nama }}</div>
+        <div class="my-title">{{ data.job }}</div>
         <p>{{ data.deskripsi }}</p>
+        <div class="links">
+          <div class="link-item">
+            <a href="#">{{ data.no_hp }}</a>
+          </div>
+          <div class="link-item">
+            <a href="#">{{ data.email }}</a>
+          </div>
+          <div class="link-item">
+            <a href="#">{{ data.portfolio }}</a>
+          </div>
+        </div> <!-- end links -->
       </div>
-      <div class="resume_item resume_work">
-        <div class="title">
-          <p class="bold">Work Experience</p>
+    </section>
+
+    <section>
+      <div class="section-title">Social Media</div>
+      <div class="fixDown">
+        <div class="skills-container">
+          <ul class="rightN">
+            {% for s in data.list_sosial_media %}
+            <li> 
+              <div>
+                <b>{{ s.nama }}</b>
+                <p>{{ s.link }}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div> <!-- end skills-container -->
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Experience</div>
+      <div class="fixDown">
+        {% for p in data.list_pengalaman %}
+        <div class="job">
+          <div class="job-title-container">
+            <div>
+              <div class="job-company">{{ p.instansi }}</div>
+              <div class="job-title">{{ p.nama }}/div>
+            </div>
+            <div>
+              {{ p.to_date(p.tahun_mulai).year }} - {{ p.to_date(p.tahun_selesai).year }}
+            </div>
+          </div> <!-- end job-title container -->
+          <p>{{ p.deskripsi }}</p>
+        </div> <!-- end job -->
+        {% endfor %}
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Education</div>
+      <div class="fixDown">
+        {% for e in data.list_edukasi %}
+        <div class="job">
+          <div class="job-title-container">
+            <div>
+              <div class="job-company">{{ e.instansi }}</div>
+              <div class="job-title">{{ e.jenjang }}</div>
+            </div>
+            <div>
+              {{ e.to_date(e.tahun_mulai).year }} - {{ e.to_date(e.tahun_selesai).year }}
+            </div>
+          </div> <!-- end job-title container -->
+          <p>{{ e.deskripsi }}</p>
+        </div> <!-- end job -->
+        {% endfor %}
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Achievement</div>
+      <div class="fixDown">
+        {% for p in data.list_penghargaan %}
+        <div class="job">
+          <div class="job-title-container">
+            <div>
+              <div class="job-company">{{ p.instansi }}</div>
+              <div class="job-title">{{ p.nama }}</div>
+            </div>
+            <div>
+              {{ p.to_date(p.tahun).strftime('%d %B %Y') }}
+            </div>
+          </div> <!-- end job-title container -->
+          <p>{{ p.deskripsi }}</p>
+        </div> <!-- end job -->
+        {% endfor %}
+      </div>
+    </section>
+    <section>
+      <div class="section-title">Skills</div>
+      <div class="fixDown">
+        <div class="skills-container">
+          <ul>
+            {% for k in data.list_kemampuan %}
+            <li>{{ k.nama }}</li>
+            {% endfor %}
+          </ul>
+        </div> <!-- end skills-container -->
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Language</div>
+      <div type="inline">
+        {% for b in data.list_bahasa %}
+        <span class="word-right">
+          {{ b.nama }} ({{ b.level }})
+        </span>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">References</div>
+      <div class="fixDown">
+        {% for r in data.list_rujukan %}
+        <div class="job-company">{{ r.nama }} ({{ r.instansi }})</div>
+        <div class="link-item">
+          <a href="mailto:{{ r.email }">{{ r.email }}</a>&nbsp;-&nbsp;<p>{{ r.no_hp }}</p>
         </div>
-        <ul>
-          {% for p in data.list_pengalaman %}
-          <li>
-            <div class="date">{{ p.to_date(p.tahun_mulai).year }} - {{ p.to_date(p.tahun_selesai).year }}</div>
-            <div class="info">
-              <p class="desc">{{ p.nama }}</p>
-              <p class="desc">{{ p.instansi }}</p>
-              <p class="desc">{{ p.deskripsi }}</p>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="resume_item resume_education">
-        <div class="title">
-          <p class="bold">Education</p>
-        </div>
-        <ul>
-          {% for e in data.list_edukasi %}
-          <li>
-            <div class="date">{{ e.to_date(e.tahun_mulai).year }} - {{ e.to_date(e.tahun_selesai).year }}</div>
-            <div class="info">
-              <p class="desc">{{ e.deskripsi }}</p>
-              <p class="desc">{{ e.instansi }}</p>
-              <p class="desc">{{ e.jenjang }}</p>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="resume_item resume_Achievement">
-        <div class="title">
-          <p class="bold">Achievement</p>
-        </div>
-        <ul>
-          {% for p in data.list_penghargaan %}
-          <li>
-            <div class="date">{{ p.to_date(p.tahun).strftime('%d %B %Y') }}</div>
-            <div class="info">
-              <p>{{ p.deskripsi }}</p>
-            </div>
-            <div class="info">
-              <p>{{ p.instansi }}</p>
-            </div>
-            <div class="info">
-              <p>{{ p.nama }}</p>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="resume_item resume_reference">
-        <div class="title">
-          <p class="bold">Reference</p>
-        </div>
-        <ul>
-          {% for r in data.list_rujukan %}
-          <li>
-            <div class="info">
-              <p class="desc">{{ r.nama }} ({{ r.no_hp }})</p>
-              <p class="desc">{{ r.email }} ({{ r.instansi }})</p>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+        <br/>
+        {% endfor %}
+    </section>
   </div>
 </body>
 
