@@ -1,7 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: #ffffff;
+  font-size: 14px;
+  line-height: 22px;
+  color: #555555;
+}
+
 #header {
   display              : grid;
   grid-template-columns: 2fr 5fr;
-  background           : #808080;
+  background-color     : #808080;
   color                : white;
 }
 
@@ -50,16 +65,16 @@
 }
 
 #progress-bar {
-  background: #CDCDCF;
-  height    : 10px;
-  margin-top: 5px;
-  width     : 100px;
+  background-color: #CDCDCF;
+  height          : 10px;
+  margin-top      : 5px;
+  width           : 100px;
 }
 
 #progress {
-  background: black;
-  height    : 10px;
-  width     : 80px;
+  background-color: black;
+  height          : 10px;
+  width           : 80px;
 }
 
 .topM {
@@ -69,13 +84,13 @@
 }
 
 #contacts {
-  background: #CDCDCF;
-  padding   : 10px;
+  background-color: #CDCDCF;
+  padding         : 10px;
 }
 
 #skills {
-  background: #CDCDCF;
-  padding   : 10px;
+  background-color: #CDCDCF;
+  padding         : 10px;
 }
 
 #exp1 {
@@ -129,15 +144,15 @@ svg {
 }
 
 #underline {
-  width     : 440px;
-  height    : 7px;
-  margin-top: 20px;
-  background: #CECED0;
+  width           : 440px;
+  height          : 7px;
+  margin-top      : 20px;
+  background-color: #CECED0;
 }
 
 #exp {
-  background: #CDCDCF;
-  padding   : 10px;
+  background-color: #CDCDCF;
+  padding         : 10px;
 }
 
 #wrapper {
