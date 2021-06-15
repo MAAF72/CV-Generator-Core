@@ -65,7 +65,7 @@
                             <li>
                                 <div class="li_wrap">
                                     <div class="text">{{ b.nama }}</div>
-                                    <b>{{ b.level }}</b>
+                                    <div class="text"><small>{{ b.level }}</small></div>
                                 </div>
                             </li>
                             {% endfor %}
@@ -79,12 +79,12 @@
                     </div>
                     <div class="hobbies">
                         <ul>
-                            {% for k in data.list_kontak %}
+                            {% for s in data.list_sosial_media %}
                             <li>
                                 <div class="li_wrap">
                                     <!-- <div class="icon"><i class="fas fa-book"></i></div> -->
-                                    <div class="text"><a href="{{ k.link }}">{{ k.nama }}</a></div>
-                                    <div class="text">{{ k.link }}</div>
+                                    <div class="text"><a href="{{ k.link }}">{{ s.nama }}</a></div>
+                                    <div class="text">{{ s.link }}</div>
                                 </div>
                             </li>
                             {% endfor %}
@@ -177,7 +177,7 @@
                                 <li>
                                     <div class="li_wrap">
                                         <div class="date">
-                                            {{ p.to_date(p.tahun).strftime('%d %B %Y') }}
+                                            {{ p.to_date(p.tahun).strftime('%d %b %Y') }}
                                         </div>
                                         <div class="info">
                                             <p class="info_title">
