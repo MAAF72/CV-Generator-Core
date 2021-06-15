@@ -31,11 +31,6 @@
                                     <div class="text">{{ data.email }}</div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="li_wrap">
-                                    <div class="text">{{ data.portfolio }}</div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -84,7 +79,7 @@
                                 <div class="li_wrap">
                                     <!-- <div class="icon"><i class="fas fa-book"></i></div> -->
                                     <div class="text"><a href="{{ s.link }}">{{ s.nama }}</a></div>
-                                    <div class="text">{{ s.link }}</div>
+                                    <!-- <div class="text">{{ s.link }}</div> -->
                                 </div>
                             </li>
                             {% endfor %}
@@ -99,12 +94,16 @@
                         <div class="name">
                             {{ data.nama }}
                         </div>
+                        <br/>
                         <div class="role">
                             {{ data.job }}
                         </div>
                     </div>
                     <div class="about">
                         {{ data.deskripsi }}
+                    </div>
+                    <div class="topN">
+                        <span>{{ data.portfolio }}</span>
                     </div>
                 </div>
 

@@ -23,7 +23,7 @@ body{
 .resume{
 	width: 800px;
 	background: #fff;
-	margin: 25px auto;
+	margin: 0 auto;
 	display: flex;
 }
 
@@ -45,6 +45,7 @@ body{
 .left .img_holder img{
 	width: 200px;
 	border-radius: 30px;
+	max-height: 210px;
 }
 
 .pb{
