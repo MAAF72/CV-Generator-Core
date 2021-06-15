@@ -21,13 +21,13 @@
         <p>{{ data.deskripsi }}</p>
         <div class="links">
           <div class="link-item">
-            <a href="#">{{ data.no_hp }}</a>
+            <p>{{ data.no_hp }}</p>
           </div>
           <div class="link-item">
-            <a href="#">{{ data.email }}</a>
+            <p>{{ data.email }}</p>
           </div>
           <div class="link-item">
-            <a href="#">{{ data.portfolio }}</a>
+            <p>{{ data.portfolio }}</p>
           </div>
         </div> <!-- end links -->
       </div>
@@ -102,7 +102,7 @@
               <div class="job-title">{{ p.nama }}</div>
             </div>
             <div>
-              {{ p.to_date(p.tahun).strftime('%d %B %Y') }}
+              {{ p.to_date(p.tahun).strftime('%d %b %Y') }}
             </div>
           </div> <!-- end job-title container -->
           <p>{{ p.deskripsi }}</p>
